@@ -10,6 +10,8 @@ This PowerShell script is used to:
 
 ## How to Use
 
+This PowerShell script was designed to automate Microsoft Outlook login in a corporate environment. It relies on the Windows username (obtained via WindowsIdentity) to automatically generate the email address according to the company’s format (for example, firstname.lastname@example.com).
+
 1. **Download the Script**: Clone or download this repository.
 
 2. **Prepare the CSV File**:
@@ -25,13 +27,21 @@ This PowerShell script is used to:
    - The script will automatically fetch the current user, match the email in the CSV, and log in to Outlook.
 
 5. **Requirements**:
-   - PowerShell version 5.1 or higher.
-   - Outlook installed on the machine.
-   - Administrative permissions to rename the computer.
+   Windows PowerShell 5.1 or higher.
+
+   Outlook installed on the machine.
+
+   Each machine must have a properly configured Windows username (Windows identity) so that the email address is automatically generated.
+
+   A CSV file containing the credentials, with semicolon (;) as the delimiter and with the columns email and password.
+   Example CSV format :csv
+            " email;password
+            " firstname.lastname@example.com;password1
+            " john.doe@example.com;password2
 
 ## Troubleshooting
 
-- If the script doesn't find a matching email in the CSV file, it will prompt you to input a new PC name using `-` instead of `.` (e.g., `john-doe`).
+- If the script doesn't find a matching email in the CSV file, it will prompt you to input a new PC name using `-` instead of `.` (e.g., `john-doe`,the new PC name will be updated after your restart your device ).
 - Make sure that the Outlook path in the script matches your system's installation.
 
 ## License
