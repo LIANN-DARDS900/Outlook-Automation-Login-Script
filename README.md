@@ -1,23 +1,39 @@
-# Outlook Automation PowerShell Script
+# Windows PC Renaming & Email Lookup Script
 
-This PowerShell script is designed to automate the login process for Outlook using a Windows username-based email. The script checks for matching credentials in a CSV file and simulates the login process for Outlook. Ideal for automating the setup of multiple user accounts in corporate environments.
+This PowerShell script is used to:
 
-## Features
-- Automatically retrieves the Windows username and generates an email.
-- Matches the generated email with credentials stored in a CSV file.
-- Launches Outlook and simulates typing the username and password for automated login.
-- Uses network connectivity checks to verify Outlook's readiness before entering the password.
+- Automatically detect the current user's Windows username.
+- Check if the username contains a period (`.`) or dash (`-`).
+- If the username contains a dash, the script replaces it with a period to match a specific email format.
+- It will then match the email with a CSV file containing user data, including email and password.
+- Launch Outlook, simulate user input, and login using the matched credentials.
 
-## Usage
-1. Modify the path to the CSV file and Outlook executable in the script.
-2. Ensure the CSV file contains columns for `email` and `password`.
-3. Run the script using PowerShell with administrator privileges.
-4. The script will automatically detect the username, match it with an email in the CSV, and proceed with the login.
+## How to Use
 
-### Requirements
-- Windows OS with PowerShell support.
-- Outlook installed on the system.
-- A properly formatted CSV file with user credentials.
+1. **Download the Script**: Clone or download this repository.
+
+2. **Prepare the CSV File**:
+   - The CSV file should contain at least two columns: `email` and `password`.
+   - The CSV should be delimited by `;` (semicolon).
+
+3. **Configure the Path to the CSV File**:
+   - Update the `$csvFile` variable with the correct path to your CSV file in the script.
+   - Example: `$csvFile = "C:\Path\To\Your\CSV\File.csv"`
+
+4. **Run the Script**:
+   - Execute the script in PowerShell.
+   - The script will automatically fetch the current user, match the email in the CSV, and log in to Outlook.
+
+5. **Requirements**:
+   - PowerShell version 5.1 or higher.
+   - Outlook installed on the machine.
+   - Administrative permissions to rename the computer.
+
+## Troubleshooting
+
+- If the script doesn't find a matching email in the CSV file, it will prompt you to input a new PC name using `-` instead of `.` (e.g., `john-doe`).
+- Make sure that the Outlook path in the script matches your system's installation.
 
 ## License
-This script is provided as-is. Use at your own risk. Please ensure that the script is adapted to your own environment and security policies.
+
+This script is provided as-is. Use it at your own risk.
